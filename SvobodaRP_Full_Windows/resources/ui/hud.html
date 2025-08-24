@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Svoboda RP — HUD</title>
+  <style>
+    body{margin:0;pointer-events:none}
+    .hud{position:absolute;left:16px;bottom:16px;background:rgba(17,24,39,.7);color:#e5e7eb;padding:10px 12px;border-radius:12px;font-family:Inter,system-ui;backdrop-filter: blur(6px);}
+  </style>
+</head>
+<body>
+  <div class="hud" id="hud">Завантаження...</div>
+  <script>
+    if ('alt' in window) {
+      alt.on('hud:update', (cash, bank) => {
+        document.getElementById('hud').textContent = `Готівка: ${cash} ₴ | Банк: ${bank} ₴`;
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Svoboda RP — Вхід</title>
+  <style>
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto}
+    .wrap{display:flex;min-height:100vh;align-items:center;justify-content:center;background:#0f172a;color:#e2e8f0}
+    .card{width:360px;padding:24px;border-radius:16px;background:#111827;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+    h1{margin:0 0 12px;font-size:22px}
+    input{width:100%;padding:10px 12px;margin:8px 0;border-radius:10px;border:1px solid #334155;background:#0b1220;color:#e2e8f0}
+    button{width:100%;padding:10px 12px;margin-top:8px;border:0;border-radius:12px;background:#22c55e;color:#0b1220;font-weight:700;cursor:pointer}
+    .muted{font-size:12px;color:#94a3b8;margin-top:8px}
+    .error{color:#fecaca;margin-top:6px;font-size:13px}
+    .success{color:#bbf7d0;margin-top:6px;font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Svoboda RP</h1>
+      <input id="login" placeholder="Логін" />
+      <input id="password" type="password" placeholder="Пароль" />
+      <button id="btnLogin">Увійти</button>
+      <button id="btnRegister">Зареєструватися</button>
+      <div class="muted">Перший вхід? Натисни «Зареєструватися».</div>
+      <div id="msg" class="error" style="display:none"></div>
+      <div id="ok" class="success" style="display:none"></div>
+    </div>
+  </div>
+  <script>
+    const msg = document.getElementById('msg');
+    const ok = document.getElementById('ok');
+    function send(name, ...args){
+      if ('alt' in window) alt.emit(name, ...args);
+      else console.log('emit', name, args);
+    }
+    document.getElementById('btnLogin').onclick = () => {
+      const u = document.getElementById('login').value.trim();
+      const p = document.getElementById('password').value.trim();
+      send('ui:login', u, p);
+    };
+    document.getElementById('btnRegister').onclick = () => {
+      const u = document.getElementById('login').value.trim();
+      const p = document.getElementById('password').value.trim();
+      send('ui:register', u, p);
+    };
+    if ('alt' in window) {
+      alt.on('ui:error', (t) => { ok.style.display='none'; msg.style.display='block'; msg.textContent=t; });
+      alt.on('ui:success', (u) => { msg.style.display='none'; ok.style.display='block'; ok.textContent='Вітаємо, ' + u + '!'; });
+    }
+  </script>
+</body>
+</html>

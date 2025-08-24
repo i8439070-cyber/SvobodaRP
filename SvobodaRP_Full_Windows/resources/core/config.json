@@ -1,0 +1,15 @@
+{
+  "db": {
+    "host": "127.0.0.1",
+    "user": "root",
+    "password": "",
+    "database": "svoboda_rp",
+    "port": 3306
+  },
+  "spawn": {
+    "x": -1037.0,
+    "y": -2737.0,
+    "z": 20.0
+  },
+  "currency": "\u20b4"
+}

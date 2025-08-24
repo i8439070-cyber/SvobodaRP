@@ -1,0 +1,16 @@
+{
+  "name": "svoboda-rp",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "echo \u0417\u0430\u043f\u0443\u0441\u043a \u0447\u0435\u0440\u0435\u0437 start.bat",
+    "lint": "echo (optional) add eslint",
+    "build": "echo (optional) transpile TS if added later"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "mysql2": "^3.11.3",
+    "uuid": "^9.0.1"
+  }
+}
